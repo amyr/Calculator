@@ -20,7 +20,7 @@ public class Calculator {
 		boolean done = false;
 		if (!selection.equalsIgnoreCase("E")){
 			if (selection.equalsIgnoreCase("U")){
-				result = caluculateResults(console);
+				caluculateResults(console); //removed the result part as you can directly call the method
 			}
 			else if (selection.equalsIgnoreCase("H")){
 				//nothing to do here...let the code loop around one more time
@@ -41,20 +41,20 @@ public class Calculator {
 		double operand1 = console.nextDouble();
 		char operator = console.next().charAt(0);
 		double operand2 = console.nextDouble();
-		int result = 0;
+		double result = 0; //change int to make it double result = 0
 		boolean isOperatorValid = true;
 		if (operator == '+'){
 			result = operand1 + operand2;
 		}
 		else if (operator == '-'){
-			result = operand1 + operand2
+			result = operand1 + operand2; //was missing a semicolon
 		}
 		else if (operator == '*'){
 			result = operand1 * operand2;
 		}
 		else if (operator == '/'){
 			if (operand2 != 0.0){
-				result = operand1\operand2;
+				result = operand1/operand2; //need to use forward slash, not backward slash
 			}
 			else {
 				result = Double.NaN;
@@ -67,7 +67,7 @@ public class Calculator {
 			isOperatorValid = false;
 		}
 		if (isOperatorValid){
-			System.out.println(operand1 +" "+operator+" "+operand2+" = " result);//would be nice use printf to control the precision of result 
+			System.out.println(operand1 +" "+operator+" "+operand2+" = " + result);//would be nice use printf to control the precision of result also needed a + before result 
 		}
 	}
 
@@ -82,16 +82,7 @@ public class Calculator {
 	
 
 	private static String getUsersSelection(Scanner console) {
-		String selection = console.nextInt();
+		String selection = console.next();
 		return selection;
 	}
-
-	private static void displayMenu() {
-		System.out.println("Enter one these options:");
-		System.out.println("\tH for Help");
-		System.out.println("\tU for using calculator");
-		System.out.println("\tQ for exiting this program");
-		System.out.print("Your selection: ");
-	}
-
 }
